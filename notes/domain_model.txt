@@ -14,3 +14,4 @@ Person(user)
 Bike                is_working?
 Docking Station     has_spare_bike?
                     release_bike
+                    return_bike
