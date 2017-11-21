@@ -1,0 +1,5 @@
+Error type: NameError
+File path: /Users/rhyskyte/.rvm/rubies/ruby-2.4.1/bin/irb
+Line number of error: 1
+Ruby docs: NameError -> Raised when a given name is invalid or undefined.
+To solve error define DockingStation
