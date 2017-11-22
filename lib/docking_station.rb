@@ -11,7 +11,7 @@ class DockingStation
   end
 
   def dock(bike)
-    raise "Sorry, station is full." if bikes.size >= 1
+    raise "Sorry, station is full." if bikes.size >= 20
     bikes << bike
   end
 end

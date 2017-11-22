@@ -9,6 +9,7 @@ describe DockingStation do
       expect(subject.dock(bike).include?(bike)).to eq true
     end
     it "should not dock a bike when the station is full and raise an error" do
+      19.times{subject.dock(bike)}
       expect {subject.dock(bike)}.to raise_error("Sorry, station is full.")
     end
   end
