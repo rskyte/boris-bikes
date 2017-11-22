@@ -1,17 +1,28 @@
 require "docking_station"
 describe DockingStation do
-  it { is_expected.to respond_to :release_bike }
-  it "should release a bike when method is called" do
-    bike = subject.release_bike
-    expect(bike.is_a?(Bike) && bike.working?).to eq true
-  end
-  it {is_expected.to respond_to(:dock).with(1).argument}
-  it "should dock a bike when dock is called" do
+
+  describe "#dock" do
+    it { is_expected.to respond_to(:dock).with(1).argument}
     bike = Bike.new
-    expect(subject.dock(bike).include?(bike)).to eq true
+    it "should dock a bike when dock is called" do
+      subject.release_bike
+      expect(subject.dock(bike).include?(bike)).to eq true
+    end
+    it "should not dock a bike when the station is full and raise an error" do
+      expect {subject.dock(bike)}.to raise_error("Sorry, station is full.")
+    end
   end
-  it "not release a bike when there are no bikes and raise an error" do
-    subject.release_bike
-    expect {subject.release_bike}.to raise_error("Sorry, no bikes available.")
+
+  describe "#release_bike" do
+    it { is_expected.to respond_to :release_bike }
+    it "should release a bike when method is called" do
+      bike = subject.release_bike
+      expect(bike.is_a?(Bike) && bike.working?).to eq true
+    end
+    it "not release a bike when there are no bikes and raise an error" do
+      subject.release_bike
+      expect {subject.release_bike}.to raise_error("Sorry, no bikes available.")
+    end
   end
+
 end
