@@ -8,8 +8,10 @@ describe DockingStation do
   it {is_expected.to respond_to(:dock).with(1).argument}
   it "should dock a bike when dock is called" do
     bike = Bike.new
-    p bike
     expect(subject.dock(bike).include?(bike)).to eq true
-    p subject.bikes
+  end
+  it "not release a bike when there are no bikes and raise an error" do
+    subject.release_bike
+    expect {subject.release_bike}.to raise_error("Sorry, no bikes available.")
   end
 end
