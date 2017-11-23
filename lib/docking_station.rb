@@ -5,6 +5,7 @@ class DockingStation
 
   def initialize(capacity=DEFAULT_CAPACITY)
     @bikes = []
+    @broken_bikes = []
     @capacity = capacity
   end
 
@@ -15,7 +16,7 @@ class DockingStation
 
   def dock(bike)
     raise "Sorry, station is full." if full?
-    @bikes << bike
+    bike.working == true ? @bikes << bike : @broken_bikes << bike
   end
 
   private
