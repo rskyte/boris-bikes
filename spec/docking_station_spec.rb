@@ -1,6 +1,7 @@
 require "docking_station"
 describe DockingStation do
   bike = Bike.new
+
   describe "#dock" do
     it { is_expected.to respond_to(:dock).with(1).argument}
     it "should dock a bike when dock is called" do
