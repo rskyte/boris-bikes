@@ -2,13 +2,17 @@ require "docking_station"
 describe DockingStation do
   bike = Bike.new
 
+  it "should have the option to set bike capacity" do
+    ds = DockingStation.new(40)
+    expect(ds.capacity).to eq 40
+  end
+
   describe "#dock" do
     it "should dock a bike when dock is called" do
       expect(subject.dock(bike).include?(bike)).to eq true
     end
     it "should not dock a bike when the station is full and raise an error" do
-      DockingStation::DEFAULT_CAPACITY.times{subject.dock(bike)}
-      expect {(DockingStation::DEFAULT_CAPACITY + 1).times{subject.dock(bike)}}.to raise_error("Sorry, station is full.")
+      expect {(subject.capacity + 1).times{subject.dock(bike)}}.to raise_error("Sorry, station is full.")
     end
   end
 
