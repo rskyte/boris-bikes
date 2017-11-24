@@ -39,7 +39,7 @@ class DockingStation
   end
 
   def full?
-    @bikes.size >= @capacity
+    @bikes.size + @broken_bikes.size >= @capacity
   end
 
 end
