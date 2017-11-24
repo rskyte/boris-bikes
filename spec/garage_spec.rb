@@ -3,7 +3,9 @@ require 'garage.rb'
 describe Garage do
   describe "#offload" do
     it "should offload bikes" do
-
+      van = double(:my_van, receive: true)
+      subject.offload(van)
+      expect(subject.bikes.empty?).to be true
     end
   end
 

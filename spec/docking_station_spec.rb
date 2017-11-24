@@ -48,4 +48,13 @@ describe DockingStation do
     end
   end
 
+  describe "#receive" do
+    it "should receive bikes" do
+      bike_true = double(:bike, working: true)
+      before_bikes = subject.bikes.size
+      subject.receive([bike_true, bike_true])
+      expect(subject.bikes.size).to eq(before_bikes + 2)
+    end
+  end
+
 end

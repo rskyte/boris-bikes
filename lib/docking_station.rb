@@ -29,6 +29,10 @@ class DockingStation
     broken_bikes.clear
   end
 
+  def receive(bikes)
+    @bikes += bikes
+  end
+
   private
   def empty?
     @bikes.empty?
