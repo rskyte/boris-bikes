@@ -1,6 +1,7 @@
 require_relative 'bike'
+require_relative 'van'
 class DockingStation
-  attr_reader :bikes, :capacity
+  attr_reader :bikes, :capacity, :broken_bikes
   DEFAULT_CAPACITY = 20
 
   def initialize(capacity=DEFAULT_CAPACITY)
@@ -16,7 +17,16 @@ class DockingStation
 
   def dock(bike)
     raise "Sorry, station is full." if full?
+    return_process(bike)
+  end
+
+  def return_process(bike)
     bike.working == true ? @bikes << bike : @broken_bikes << bike
+  end
+
+  def offload(van)
+    van.receive(broken_bikes)
+    broken_bikes.clear
   end
 
   private
