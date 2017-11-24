@@ -40,7 +40,7 @@ describe DockingStation do
 
   describe "#offload" do
     it "should offload all broken bikes to a van" do
-      van = Van.new
+      van = double(:my_van, receive: true)
       allow(bike).to receive(:working).and_return(false)
       subject.dock(bike)
       subject.offload(van)

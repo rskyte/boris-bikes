@@ -8,4 +8,12 @@ describe Van do
       expect(subject.bikes.size).to eq 2
     end
   end
+
+  describe "#offload" do
+    it "should offload bikes" do
+      destination = double(:my_destination, receive: true)
+      subject.offload(destination)
+      expect(subject.bikes.empty?).to be true
+    end
+  end
 end
